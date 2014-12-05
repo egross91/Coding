@@ -24,7 +24,7 @@ class Main {
 		}
 	}
 	
-	public static void DFS(int r, int c, int[][]visited) {
+	public static void DFS(int r, int c, int[][] visited) {
 		visited[r][c] = 1;
 		++nodes;
 		for (int i = 0; i < 8; ++i) {
