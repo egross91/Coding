@@ -1,12 +1,7 @@
-/*
-ID: eric.bg1
-LANG: JAVA
-TASK: calfflac
-*/
 import java.io.*;
 import java.util.*;
 
-class calfflac
+class Main
 {
 	public static void main(String[] args) throws IOException
 	{
@@ -25,7 +20,7 @@ class calfflac
 		String longestPalin = getLongestPalin(builder.toString());
 		int length = longestPalin.length();
 		String answer = getActual(builder.toString(), longestPalin);
-		
+
 		out.println(length);
 		out.println(answer);
 		out.close();
