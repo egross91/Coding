@@ -1,3 +1,8 @@
+/*
+* ID: eric.bg1
+* LANG: JAVA
+* TASK: milk3
+*/
 import java.io.*;
 import java.util.*;
 
