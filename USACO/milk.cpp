@@ -78,7 +78,8 @@ int findMinimumMilk(const int& N, const vector<Pair>& milkers)
 		if ((goal - curr.milk) > 0)
 		{
 			goal -= curr.milk;
-			min += (curr.cents * curr.milk);		}
+			min += (curr.cents * curr.milk);
+		}
 		else
 		{
 			min += (goal * curr.cents);
