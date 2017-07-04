@@ -6,33 +6,41 @@
  *     ListNode(int x) { val = x; }
  * }
  */
+ // AC
 public class Solution {
     public boolean isPalindrome(ListNode head) {
-        if (head == null)
-            return true;
+        if (head == null || head.next == null) { return true; }
         
-        ListNode tortoise = head;
-        ListNode hare     = head;
-        ListNode result   = isPalindrome(tortoise, hare);
+        Stack<Integer> values = new Stack<Integer>();
+        ListNode tortoise     = head;
+        ListNode hare         = head;
+        int length            = 1;
         
-        return (result != null && result.val != Integer.MIN_VALUE);
-    }
-    
-    private ListNode isPalindrome(ListNode tortoise, ListNode hare) {
-        if (tortoise.next == null)
-            return tortoise;
-        if (hare == null)
-            return tortoise;
-        if (hare.next == null)
-            return tortoise.next;
+        do {
+            values.push(tortoise.val);
+            ++length;
+            
+            tortoise = tortoise.next;
+            hare     = hare.next;
+            
+            if (hare != null) {
+                ++length;
+                hare = hare.next;
+            }
+        } while (hare != null);
         
-        ListNode toCompare = isPalindrome(tortoise.next, hare.next.next);
+        if ((length & 0x1) == 0 && length > 2) {
+            values.pop();
+        }
         
-        if (toCompare == null)
-            return tortoise;
-        if (toCompare.val != tortoise.val)
-            return new ListNode(Integer.MIN_VALUE);
+        while (tortoise != null) {
+            int value = values.pop();
+            
+            if (value != tortoise.val) { return false; }
+            
+            tortoise = tortoise.next;
+        }
         
-        return ((toCompare.next != null) ? toCompare.next : tortoise);
+        return true;
     }
 }
